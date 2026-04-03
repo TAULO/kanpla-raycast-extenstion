@@ -2,7 +2,7 @@ import { Detail, LaunchProps } from "@raycast/api";
 import useKanpla from "./hooks/useKanpla";
 import { IMenuItem } from "@taulo1999/kanpla-api";
 
-export default function Command(props: LaunchProps<{ arguments: any }>) {
+export default function Command(props: LaunchProps<{ arguments: { date: string } }>) {
   const date = props.arguments.date;
   const kanpla = useKanpla();
 

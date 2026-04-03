@@ -2,8 +2,8 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "kanpla",
   "title": "Kanpla",
-  "description": "",
-  "icon": "kanpla-icon-svg.svg",
+  "description": "See what's for lunch at your Kanpla canteen",
+  "icon": "kanpla-icon-96x96.png",
   "author": "taulo",
   "platforms": [
     "macOS",

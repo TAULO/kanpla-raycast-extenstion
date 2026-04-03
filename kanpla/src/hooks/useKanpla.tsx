@@ -1,7 +1,6 @@
 import { usePromise } from "@raycast/utils";
 import Kanpla from "@taulo1999/kanpla-api/dist/Kanpla";
 import { getPreferenceValues } from "@raycast/api";
-import { formatMarkdown } from "../utils";
 
 interface Preferences {
   email: string;
