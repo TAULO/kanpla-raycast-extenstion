@@ -21,11 +21,14 @@ export default function Command(props: LaunchProps<{ arguments: any }>) {
       metadata={
         <Detail.Metadata>
           {splitData?.map((item: any, index: number) => (
-            <Detail.Metadata.Label key={index} title={item.name} text={item.menu?.name ?? "No menu"} />
+            <>
+              <Detail.Metadata.Label key={index} title={item.name} text={item.menu?.name ?? "No menu"} />
+            </>
           ))}
+          <Detail.Metadata.Separator />
+          <Detail.Metadata.Link title="Lunch" target="https://app.kanpla.io/app" text="Sign up in Kanpla" />
         </Detail.Metadata>
       }
     />
   );
-  // return <Detail isLoading={isLoading} markdown={markdown} />;
 }
