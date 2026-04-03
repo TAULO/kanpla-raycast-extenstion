@@ -7,11 +7,14 @@ export default function Command(props: LaunchProps<{ arguments: { date: string }
   const kanpla = useKanpla();
 
   const { isLoading, data } = date ? kanpla.getMenusByDate(new Date(date)) : kanpla.getTodayMenu();
+  const onlyWithMenus = data?.filter((item: IMenuItem) => item.menu && item.menu.name) ?? [];
 
   return (
-    <List isLoading={isLoading} isShowingDetail>
-      {data?.map((item: IMenuItem, index: number) => {
-        return (
+    <List isLoading={isLoading} isShowingDetail={onlyWithMenus.length > 0}>
+      {onlyWithMenus.length === 0 ? (
+        <List.EmptyView title="No menus found" />
+      ) : (
+        onlyWithMenus.map((item: IMenuItem, index: number) => (
           <List.Item
             key={index}
             title={item.menu?.name ?? "No menu"}
@@ -21,7 +24,6 @@ export default function Command(props: LaunchProps<{ arguments: { date: string }
                 markdown={item.photo ? `![](${item.photo})` : ""}
                 metadata={
                   <List.Item.Detail.Metadata>
-                    <List.Item.Detail.Metadata.Separator />
                     <List.Item.Detail.Metadata.Label title="Dish" text={item.menu?.name ?? "No menu"} />
                     <List.Item.Detail.Metadata.Label title="Category" text={item.name} />
                     <List.Item.Detail.Metadata.Separator />
@@ -40,8 +42,8 @@ export default function Command(props: LaunchProps<{ arguments: { date: string }
               </ActionPanel>
             }
           />
-        );
-      })}
+        ))
+      )}
     </List>
   );
 }
