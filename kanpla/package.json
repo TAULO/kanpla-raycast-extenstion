@@ -3,7 +3,7 @@
   "name": "kanpla",
   "title": "Kanpla",
   "description": "See what's for lunch at your Kanpla canteen",
-  "icon": "kanpla-icon-96x96.png",
+  "icon": "kanpla-icon.png",
   "author": "taulo",
   "platforms": [
     "macOS",
