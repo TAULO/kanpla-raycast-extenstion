@@ -1,4 +1,4 @@
-import { List, LaunchProps, Icon, Image, ActionPanel, Action, ListItem } from "@raycast/api";
+import { List, LaunchProps, ActionPanel, Action } from "@raycast/api";
 import useKanpla from "./hooks/useKanpla";
 import { IMenuItem } from "@taulo1999/kanpla-api";
 
@@ -36,7 +36,7 @@ export default function Command(props: LaunchProps<{ arguments: { date: string }
             }
             actions={
               <ActionPanel>
-                <Action.OpenInBrowser title="Sign Up in Kanpla" url="https://app.kanpla.io/app" />
+                <Action.OpenInBrowser title="Sign up in Kanpla" url="https://app.kanpla.io/app" />
               </ActionPanel>
             }
           />

@@ -20,16 +20,16 @@ export function getIcon(item: string): IIcon {
       return {
         source: "beef.png",
         tintColor: "#FF6B35",
-      }
+      };
     case "vegetarian":
       return {
         source: "salad.png",
         tintColor: "#4CAF50",
-      }
+      };
     default:
       return {
         source: "utensils.png",
         tintColor: "#FFFFF",
-      }
+      };
   }
 }
