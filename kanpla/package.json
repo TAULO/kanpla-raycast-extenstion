@@ -3,7 +3,7 @@
   "name": "kanpla",
   "title": "Kanpla",
   "description": "",
-  "icon": "extension-icon.png",
+  "icon": "kanpla-icon-96x96.png",
   "author": "taulo",
   "platforms": [
     "macOS",
@@ -12,8 +12,8 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "today",
-      "title": "Today",
+      "name": "today-menu",
+      "title": "Today's Menu",
       "description": "Today's menu",
       "mode": "view"
     },
