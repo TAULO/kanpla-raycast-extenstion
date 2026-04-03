@@ -1,4 +1,4 @@
-import { Detail, LaunchProps } from "@raycast/api";
+import { List, LaunchProps, Icon, Image, ActionPanel, Action, ListItem } from "@raycast/api";
 import useKanpla from "./hooks/useKanpla";
 import { IMenuItem } from "@taulo1999/kanpla-api";
 
@@ -7,25 +7,41 @@ export default function Command(props: LaunchProps<{ arguments: { date: string }
   const kanpla = useKanpla();
 
   const { isLoading, data } = date ? kanpla.getMenusByDate(new Date(date)) : kanpla.getTodayMenu();
-  const loadingText = date ? "Fetching menu for " + date + "..." : "Fetching today's menu...";
-  const noMenuText = date ? "No menus available for date: " + date : "No menus available today";
-
-  const splitData = data?.slice(0, 2);
-  const photos = splitData?.map((item: IMenuItem) => (item?.photo ? `![](${item.photo})` : ""))?.join("\n\n");
-  const markdown = isLoading ? loadingText : photos || noMenuText;
 
   return (
-    <Detail
-      markdown={markdown}
-      metadata={
-        <Detail.Metadata>
-          {splitData?.map((item: IMenuItem, index: number) => (
-            <Detail.Metadata.Label key={index} title={item.name} text={item.menu?.name ?? "No menu"} />
-          ))}
-          <Detail.Metadata.Separator />
-          <Detail.Metadata.Link title="Lunch" target="https://app.kanpla.io/app" text="Sign up in Kanpla" />
-        </Detail.Metadata>
-      }
-    />
+    <List isLoading={isLoading} isShowingDetail>
+      {data?.map((item: IMenuItem, index: number) => {
+        return (
+          <List.Item
+            key={index}
+            title={item.menu?.name ?? "No menu"}
+            subtitle={item.name}
+            detail={
+              <List.Item.Detail
+                markdown={item.photo ? `![](${item.photo})` : ""}
+                metadata={
+                  <List.Item.Detail.Metadata>
+                    <List.Item.Detail.Metadata.Separator />
+                    <List.Item.Detail.Metadata.Label title="Dish" text={item.menu?.name ?? "No menu"} />
+                    <List.Item.Detail.Metadata.Label title="Category" text={item.name} />
+                    <List.Item.Detail.Metadata.Separator />
+                    <List.Item.Detail.Metadata.Link
+                      title="Lunch"
+                      target="https://app.kanpla.io/app"
+                      text="Sign up in Kanpla"
+                    />
+                  </List.Item.Detail.Metadata>
+                }
+              />
+            }
+            actions={
+              <ActionPanel>
+                <Action.OpenInBrowser title="Sign Up in Kanpla" url="https://app.kanpla.io/app" />
+              </ActionPanel>
+            }
+          />
+        );
+      })}
+    </List>
   );
 }
