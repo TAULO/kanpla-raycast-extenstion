@@ -1,17 +1,13 @@
 import { usePromise } from "@raycast/utils";
 import Kanpla from "@taulo1999/kanpla-api/dist/Kanpla";
 import { getPreferenceValues } from "@raycast/api";
+import { formatMarkdown } from "../utils";
 
 interface Preferences {
   email: string;
   password: string;
   firebaseAPIKey: string;
   firebaseModuleId: string;
-}
-
-function formatMarkdown(item: any) {
-  return `## ${item.name}
-* ${item?.menu?.name ?? "No menu"}`;
 }
 
 export default function useKanpla() {
@@ -29,15 +25,13 @@ export default function useKanpla() {
     if (!date) throw new Error("Date is required");
 
     return usePromise(async () => {
-      const response = await kanpla.getMenusByDate(date);
-      return response.map(formatMarkdown);
+      return await kanpla.getMenusByDate(date);
     });
   };
 
   const getTodayMenu = () => {
     return usePromise(async () => {
-      const response = await kanpla.getTodayMenu();
-      return response.map(formatMarkdown);
+      return await kanpla.getTodayMenu();
     });
   };
 

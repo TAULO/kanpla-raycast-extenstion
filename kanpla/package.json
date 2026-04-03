@@ -3,7 +3,7 @@
   "name": "kanpla",
   "title": "Kanpla",
   "description": "",
-  "icon": "kanpla-icon-96x96.png",
+  "icon": "kanpla-icon-svg.svg",
   "author": "taulo",
   "platforms": [
     "macOS",
@@ -12,22 +12,16 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "today-menu",
-      "title": "Today's Menu",
-      "description": "Today's menu",
-      "mode": "view"
-    },
-    {
-      "name": "menu-by-date",
-      "title": "Menu by Date",
-      "description": "Get menu for a specific date",
+      "name": "menu",
+      "title": "Menu",
+      "description": "Get today's menu or get the menu for a specific date",
       "mode": "view",
       "arguments": [
         {
           "name": "date",
           "placeholder": "YYYY-MM-DD",
           "type": "text",
-          "required": true
+          "required": false
         }
       ]
     }
