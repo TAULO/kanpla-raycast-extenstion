@@ -12,15 +12,60 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "kanpla",
-      "title": "kanpla",
-      "description": "",
+      "name": "today",
+      "title": "Today",
+      "description": "Today's menu",
       "mode": "view"
+    },
+    {
+      "name": "menu-by-date",
+      "title": "Menu by Date",
+      "description": "Get menu for a specific date",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "date",
+          "placeholder": "YYYY-MM-DD",
+          "type": "text",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "email",
+      "title": "Email",
+      "description": "Your Kanpla email",
+      "type": "textfield",
+      "required": true
+    },
+    {
+      "name": "password",
+      "title": "Password",
+      "description": "Your Kanpla password",
+      "type": "password",
+      "required": true
+    },
+    {
+      "name": "firebaseAPIKey",
+      "title": "Firebase API Key",
+      "description": "Firebase API Key for Kanpla",
+      "type": "password",
+      "required": true
+    },
+    {
+      "name": "firebaseModuleId",
+      "title": "Firebase Module ID",
+      "description": "Firebase Module ID for Kanpla",
+      "type": "textfield",
+      "required": true
     }
   ],
   "dependencies": {
     "@raycast/api": "^1.104.11",
-    "@raycast/utils": "^1.17.0"
+    "@raycast/utils": "^1.17.0",
+    "@taulo1999/kanpla-api": "^1.0.2"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^2.0.4",
