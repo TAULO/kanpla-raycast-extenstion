@@ -34,5 +34,17 @@ export default function useKanpla() {
     });
   };
 
-  return { getMenusByDate, getTodayMenu };
+  const getThisWeeksMenu = () => {
+    return usePromise(async () => {
+      return await kanpla.getThisWeekMenu();
+    });
+  };
+
+  const getNextWeeksMenu = () => {
+    return usePromise(async () => {
+      return await kanpla.getNextWeekMenu();
+    });
+  }
+
+  return { getMenusByDate, getTodayMenu, getThisWeeksMenu, getNextWeeksMenu };
 }

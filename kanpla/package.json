@@ -24,6 +24,18 @@
           "required": false
         }
       ]
+    },
+    {
+      "name": "this-week",
+      "title": "This Week's Menu",
+      "description": "Get this week's menu",
+      "mode": "view"
+    },
+    {
+      "name": "next-week",
+      "title": "Next Week's Menu",
+      "description": "Get next week's menu",
+      "mode": "view"
     }
   ],
   "preferences": [
@@ -59,7 +71,7 @@
   "dependencies": {
     "@raycast/api": "^1.104.11",
     "@raycast/utils": "^1.17.0",
-    "@taulo1999/kanpla-api": "^1.0.4"
+    "@taulo1999/kanpla-api": "^1.0.7"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^2.0.4",
