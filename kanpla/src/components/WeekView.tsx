@@ -1,5 +1,5 @@
 import { List } from "@raycast/api";
-import { WeekMenu } from "@taulo1999/kanpla-api";
+import { IMenuItem, WeekMenu } from "@taulo1999/kanpla-api";
 import { ListItemView } from "./ListItemView";
 
 interface IWeekViewProps {
@@ -16,13 +16,13 @@ export const WeekView = ({ isLoading, data, noMenuText }: IWeekViewProps) => {
       {objectEntries.length === 0 ? (
         <List.EmptyView title={noMenuText} />
       ) : (
-        objectEntries.map(([date, items]) => (
+        objectEntries.map(([date, items], parentIndex) => (
           <List.Section
-            key={date}
+            key={`${data}-${parentIndex}`}
             title={new Date(date).toLocaleDateString("en-DK", { weekday: "long", day: "numeric", month: "long" })}
           >
-            {items.slice(0, 2).map((item, index) => (
-              <ListItemView item={item} index={index}></ListItemView>
+            {items.slice(0, 2).map((item, childIndex) => (
+              <ListItemView item={item} index={childIndex} key={childIndex}></ListItemView>
             ))}
           </List.Section>
         ))
