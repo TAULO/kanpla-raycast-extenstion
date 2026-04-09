@@ -10,7 +10,6 @@ export const ListItemView = ({ item, index }: IListItemView) => (
   <List.Item
     key={index}
     title={item.menu?.name ?? "No menu"}
-    subtitle={item.name}
     detail={
       <List.Item.Detail
         markdown={item.photo ? `![](${item.photo})` : ""}
