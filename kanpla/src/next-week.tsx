@@ -1,10 +1,9 @@
-import useKanpla from "./hooks/useKanpla";
 import { WeekMenu } from "@taulo1999/kanpla-api";
 import { WeekView } from "./components/WeekView";
+import { useNextWeeksMenu } from "./hooks/useKanpla";
 
 export default function Command() {
-  const kanpla = useKanpla();
-  const { isLoading, data } = kanpla.getNextWeeksMenu();
+  const { isLoading, data } = useNextWeeksMenu();
 
-  return <WeekView isLoading={isLoading} data={data as WeekMenu} noMenuText={'No menus found for next week'}></WeekView>;
+  return <WeekView isLoading={isLoading} data={data} noMenuText={'No menus found for next week'}></WeekView>;
 }

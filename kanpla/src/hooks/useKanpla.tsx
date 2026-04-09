@@ -1,3 +1,4 @@
+
 import { usePromise } from "@raycast/utils";
 import Kanpla from "@taulo1999/kanpla-api/dist/Kanpla";
 import { getPreferenceValues } from "@raycast/api";
@@ -9,42 +10,41 @@ interface Preferences {
   firebaseModuleId: string;
 }
 
-export default function useKanpla() {
+function getKanplaClient() {
   const { email, password, firebaseAPIKey, firebaseModuleId } = getPreferenceValues<Preferences>();
-
-  const kanpla = new Kanpla({
+  return new Kanpla({
     email,
     password,
     firebaseAPIKey,
     firebaseModuleId,
     language: "en",
   });
+}
 
-  const getMenusByDate = (date: Date) => {
-    if (!date) throw new Error("Date is required");
+export function useMenusByDate(date: Date) {
+  return usePromise(async () => {
+    const kanpla = getKanplaClient();
+    return await kanpla.getMenusByDate(date);
+  }, [], { execute: !!date });
+}
 
-    return usePromise(async () => {
-      return await kanpla.getMenusByDate(date);
-    });
-  };
+export function useTodayMenu() {
+  return usePromise(async () => {
+    const kanpla = getKanplaClient();
+    return await kanpla.getTodayMenu();
+  });
+}
 
-  const getTodayMenu = () => {
-    return usePromise(async () => {
-      return await kanpla.getTodayMenu();
-    });
-  };
+export function useThisWeeksMenu() {
+  return usePromise(async () => {
+    const kanpla = getKanplaClient();
+    return await kanpla.getThisWeekMenu();
+  });
+}
 
-  const getThisWeeksMenu = () => {
-    return usePromise(async () => {
-      return await kanpla.getThisWeekMenu();
-    });
-  };
-
-  const getNextWeeksMenu = () => {
-    return usePromise(async () => {
-      return await kanpla.getNextWeekMenu();
-    });
-  }
-
-  return { getMenusByDate, getTodayMenu, getThisWeeksMenu, getNextWeeksMenu };
+export function useNextWeeksMenu() {
+  return usePromise(async () => {
+    const kanpla = getKanplaClient();
+    return await kanpla.getNextWeekMenu();
+  });
 }

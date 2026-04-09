@@ -1,11 +1,12 @@
 import { Action, ActionPanel, List } from "@raycast/api";
+import { IMenuItem } from "@taulo1999/kanpla-api";
 
-interface IRaycastListItem {
-  item: any;
+interface IListItemView {
+  item: IMenuItem;
   index: number;
 }
 
-export const ListItemView = ({ item, index }: IRaycastListItem) => (
+export const ListItemView = ({ item, index }: IListItemView) => (
   <List.Item
     key={index}
     title={item.menu?.name ?? "No menu"}
@@ -18,11 +19,7 @@ export const ListItemView = ({ item, index }: IRaycastListItem) => (
             <List.Item.Detail.Metadata.Label title="Dish" text={item.menu?.name ?? "No menu"} />
             <List.Item.Detail.Metadata.Label title="Category" text={item.name} />
             <List.Item.Detail.Metadata.Separator />
-            <List.Item.Detail.Metadata.Link
-              title="Lunch"
-              target="https://app.kanpla.io/app"
-              text="Sign up in Kanpla"
-            />
+            <List.Item.Detail.Metadata.Link title="Lunch" target="https://app.kanpla.io/app" text="Sign up in Kanpla" />
           </List.Item.Detail.Metadata>
         }
       />
