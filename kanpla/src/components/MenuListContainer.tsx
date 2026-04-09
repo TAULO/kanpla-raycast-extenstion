@@ -1,9 +1,10 @@
 import { List } from "@raycast/api";
 import { PropsWithChildren } from "react";
+import { IMenuItem } from "@taulo1999/kanpla-api";
 
 interface INoDataViewProps {
   isLoading: boolean;
-  data: Array<any>;
+  data: Array<IMenuItem>;
   noMenuText: string;
 }
 

@@ -26,9 +26,13 @@ function getKanplaClient() {
 }
 
 export function useMenusByDate(date: Date) {
-  return usePromise(async () => {
-    return await getKanplaClient().getMenusByDate(date);
-  }, [], { execute: !!date });
+  return usePromise(
+    async () => {
+      return await getKanplaClient().getMenusByDate(date);
+    },
+    [],
+    { execute: !!date },
+  );
 }
 
 export function useTodayMenu() {
